@@ -8,6 +8,7 @@
     { path: 'campanhas', page: 'campaigns', label: 'Campanhas', icon: 'megaphone', count: () => A.store.state.campaigns.filter((c) => c.status === 'active' || c.status === 'testing').length },
     { path: 'ofertas', page: 'offers', label: 'Minhas ofertas', icon: 'package', count: () => A.store.state.offers.filter((o) => o.status !== 'archived').length },
     { path: 'espionagem', page: 'spy', label: 'Espionagem', icon: 'eye', count: () => A.store.state.spy.filter((s) => s.status !== 'discarded' && s.status !== 'modeled').length },
+    { path: 'swipe', page: 'swipe', label: 'Swipe de ofertas', icon: 'bookmark', count: () => A.store.state.swipe.length },
     { path: 'vendas', page: 'sales', label: 'Vendas', icon: 'cart' },
     { path: 'custos', page: 'costs', label: 'Custos extras', icon: 'wallet' },
     { path: 'config', page: 'settings', label: 'Configurações', icon: 'settings' },
@@ -26,7 +27,7 @@
     const nav = document.getElementById('nav');
     nav.innerHTML = '<div class="nav-section">Operação</div>' + ROUTES.map((r, i) => {
       const n = r.count ? r.count() : 0;
-      return (i === 4 ? '<div class="nav-section">Financeiro</div>' : '') + (i === 6 ? '<div class="nav-section">Sistema</div>' : '') +
+      return (i === 5 ? '<div class="nav-section">Financeiro</div>' : '') + (i === 7 ? '<div class="nav-section">Sistema</div>' : '') +
         '<a href="#/' + r.path + '" class="' + (current.route === r ? 'active' : '') + '">' + icon(r.icon) + '<span>' + esc(r.label) + '</span>' + (n ? '<span class="count">' + n + '</span>' : '') + '</a>';
     }).join('');
     const st = A.store.state.settings;
@@ -131,7 +132,8 @@
       if (k === 'n') { e.preventDefault(); A.pages.campaigns.quickEntry(); }
       else if (k === 'v') { e.preventDefault(); A.pages.sales.edit(); }
       else if (k === 'e') { e.preventDefault(); A.pages.spy.open(); }
-      else if (/^[1-7]$/.test(k)) { location.hash = '#/' + ROUTES[Number(k) - 1].path; }
+      else if (k === 's') { e.preventDefault(); A.pages.swipe.hunt(); }
+      else if (/^[1-8]$/.test(k)) { location.hash = '#/' + ROUTES[Number(k) - 1].path; }
     });
 
     if (!location.hash) history.replaceState(null, '', '#/dashboard');

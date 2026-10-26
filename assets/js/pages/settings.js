@@ -26,10 +26,10 @@
     reader.onload = async () => {
       let data;
       try { data = A.store.parseImport(String(reader.result)); } catch (e) { ui().toast(e.message || 'Arquivo inválido.', { error: true, duration: 5000 }); return; }
-      const c = ['offers', 'campaigns', 'sales', 'spy'].map((k) => data[k].length);
+      const c = ['offers', 'campaigns', 'sales', 'spy', 'swipe'].map((k) => data[k].length);
       const ok = await ui().confirm({
         title: 'Restaurar backup?', confirmLabel: 'Restaurar', danger: true,
-        html: 'O arquivo tem <b>' + c[0] + '</b> ofertas, <b>' + c[1] + '</b> campanhas, <b>' + c[2] + '</b> vendas e <b>' + c[3] + '</b> espionadas.<br><br>Os dados atuais serão <b>substituídos</b>. Você poderá desfazer logo em seguida.',
+        html: 'O arquivo tem <b>' + c[0] + '</b> ofertas, <b>' + c[1] + '</b> campanhas, <b>' + c[2] + '</b> vendas, <b>' + c[3] + '</b> espionadas e <b>' + c[4] + '</b> itens no swipe.<br><br>Os dados atuais serão <b>substituídos</b>. Você poderá desfazer logo em seguida.',
       });
       if (!ok) return;
       const snap = A.store.snapshot();
@@ -63,8 +63,8 @@
           '<dt>Custos extras</dt><dd>Entram no lucro geral e da oferta vinculada (não nas campanhas)</dd>' +
         '</dl></div></div>' +
         '<div class="card"><div class="card-head"><h3>Atalhos</h3></div><div class="card-body"><dl class="kv">' +
-          '<dt><kbd>N</kbd></dt><dd>Lançamento do dia</dd><dt><kbd>V</kbd></dt><dd>Registrar venda</dd><dt><kbd>E</kbd></dt><dd>Nova oferta espionada</dd>' +
-          '<dt><kbd>1</kbd>…<kbd>7</kbd></dt><dd>Ir para as páginas do menu</dd><dt><kbd>Esc</kbd></dt><dd>Fechar janela</dd>' +
+          '<dt><kbd>N</kbd></dt><dd>Lançamento do dia</dd><dt><kbd>V</kbd></dt><dd>Registrar venda</dd><dt><kbd>E</kbd></dt><dd>Nova oferta espionada</dd><dt><kbd>S</kbd></dt><dd>Garimpar ofertas (swipe)</dd>' +
+          '<dt><kbd>1</kbd>…<kbd>8</kbd></dt><dd>Ir para as páginas do menu</dd><dt><kbd>Esc</kbd></dt><dd>Fechar janela</dd>' +
         '</dl></div></div>' +
       '</div>' +
       '<div class="stack">' +
@@ -76,7 +76,7 @@
         '</div></div>' +
         '<div class="card"><div class="card-head"><h3>Seus dados</h3></div><div class="card-body">' +
           '<div class="metric-strip">' +
-            [['Ofertas', counts.offers], ['Campanhas', counts.campaigns], ['Registros de gasto', counts.spend], ['Vendas', counts.sales], ['Espionadas', counts.spy], ['Custos', counts.costs]].map(([l, n]) => '<div><span>' + l + '</span><b>' + A.num(n) + '</b></div>').join('') +
+            [['Ofertas', counts.offers], ['Campanhas', counts.campaigns], ['Registros de gasto', counts.spend], ['Vendas', counts.sales], ['Espionadas', counts.spy], ['Swipe', counts.swipe], ['Custos', counts.costs]].map(([l, n]) => '<div><span>' + l + '</span><b>' + A.num(n) + '</b></div>').join('') +
           '</div>' +
           '<div class="muted small" style="margin-top:10px">Espaço usado: ' + A.num(usage / 1024, 0) + ' KB de ~5.000 KB disponíveis no navegador.</div>' +
           '<div class="row" style="margin-top:14px"><button class="btn" data-act="demo">' + icon('database') + 'Adicionar dados de exemplo</button>' +
@@ -103,7 +103,7 @@
       if (a === 'export') exportBackup();
       if (a === 'demo') { A.store.seedDemo(); ui().toast('Dados de exemplo adicionados.'); }
       if (a === 'reset') {
-        const ok = await ui().confirm({ title: 'Apagar TODOS os dados?', html: 'Isso remove ofertas, campanhas, vendas, espionagem e custos deste navegador. <b>Recomendo baixar um backup antes.</b>', typeToConfirm: 'APAGAR', confirmLabel: 'Apagar tudo' });
+        const ok = await ui().confirm({ title: 'Apagar TODOS os dados?', html: 'Isso remove ofertas, campanhas, vendas, espionagem, swipe e custos deste navegador. <b>Recomendo baixar um backup antes.</b>', typeToConfirm: 'APAGAR', confirmLabel: 'Apagar tudo' });
         if (ok) { const snap = A.store.snapshot(); A.store.reset(); ui().toast('Todos os dados foram apagados.', { action: { label: 'Desfazer', fn: () => A.store.restore(snap) }, duration: 10000 }); }
       }
     });

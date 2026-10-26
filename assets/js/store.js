@@ -5,7 +5,7 @@
   const KEY = 'gestor-campanhas:v1';
   const UI_KEY = 'gestor-campanhas:ui';
   const VERSION = 1;
-  const COLLECTIONS = ['offers', 'campaigns', 'spend', 'sales', 'spy', 'costs'];
+  const COLLECTIONS = ['offers', 'campaigns', 'spend', 'sales', 'spy', 'swipe', 'costs'];
 
   /* ---------- Listas de opções ---------- */
   const C = {
@@ -33,7 +33,7 @@
       name: '', currency: 'BRL', taxRate: 0, adTaxRate: 0, monthlyGoal: 0,
       theme: 'system', lastBackup: null, createdAt: new Date().toISOString(),
     },
-    offers: [], campaigns: [], spend: [], sales: [], spy: [], costs: [],
+    offers: [], campaigns: [], spend: [], sales: [], spy: [], swipe: [], costs: [],
   });
 
   function migrate(data) {
@@ -221,6 +221,12 @@
       mk({ name: 'Anti-Ronco Pro', niche: 'Saúde', country: 'US', adPlatform: 'Meta Ads', status: 'new', rating: 0, price: 39.9, adLibraryUrl: '', salesPageUrl: '', foundAt: A.addDays(t, -1), adsHistory: hist(-1, [21]), tags: ['físico'], notes: '' }),
       mk({ name: 'Mentoria Confeitaria', niche: 'Culinária', country: 'BR', adPlatform: 'Meta Ads', status: 'discarded', rating: 2, price: 497, adLibraryUrl: '', salesPageUrl: '', foundAt: A.addDays(t, -45), adsHistory: hist(-45, [9, 6, 3, 1]), tags: [], notes: 'Anúncios caindo, parece ter saturado.' }),
     ];
+    const swipe = [
+      mk({ source: 'fb', title: 'Chá Seca Barriga 7D', pageName: 'Vida Leve Oficial', country: 'BR', format: 'Vídeo', startedAt: A.addDays(t, -64), activeAds: 37, niche: 'Emagrecimento', rating: 5, fav: true, savedAt: A.addDays(t, -3), url: 'https://www.facebook.com/ads/library/', hook: 'Eu tomava isso antes de dormir e acordava 1 cm mais seca — sem academia.', headline: 'Receita de 2 ingredientes', cta: 'Saiba mais', angle: 'Mecanismo único + prova da própria pessoa', tags: ['UGC', 'VSL', 'low ticket'], notes: 'Criativo em selfie, legenda grande. Quiz de 6 perguntas antes da VSL.' }),
+      mk({ source: 'fb', title: 'Desafio Inglês 21 dias', pageName: 'Fala Fácil', country: 'BR', format: 'Imagem', startedAt: A.addDays(t, -12), activeAds: 9, niche: 'Idiomas', rating: 3, savedAt: A.addDays(t, -2), url: 'https://www.facebook.com/ads/library/', hook: 'Se você entende essa frase, já sabe mais inglês do que pensa.', cta: 'Inscreva-se', angle: 'Curiosidade + autoconfiança', tags: ['desafio'], notes: '' }),
+      mk({ source: 'appstore', title: 'App de Jejum Intermitente (exemplo)', developer: 'Exemplo Apps', category: 'Saúde e fitness', country: 'BR', priceLabel: 'Grátis', monetization: 'Trial 7 dias → R$ 29,90/mês ou R$ 149,90/ano', appRating: 4.7, ratingCount: 48200, niche: 'Emagrecimento', rating: 4, savedAt: A.addDays(t, -6), url: 'https://apps.apple.com/br/', hook: 'Perca peso no seu ritmo com planos de jejum personalizados', angle: 'Quiz de onboarding → plano personalizado → paywall', tags: ['assinatura', 'quiz'], notes: 'Onboarding com 20 telas antes do paywall. Dá pra modelar como quiz + produto digital.' }),
+      mk({ source: 'appstore', title: 'App de Meditação Cristã (exemplo)', developer: 'Exemplo Apps', category: 'Estilo de vida', country: 'BR', priceLabel: 'Grátis', monetization: 'Assinatura anual R$ 119,90', appRating: 4.8, ratingCount: 6100, niche: 'Religião', rating: 3, savedAt: A.addDays(t, -10), url: 'https://apps.apple.com/br/', hook: 'Durma em paz com orações guiadas', tags: ['assinatura'], notes: '' }),
+    ];
     const costs = [
       mk({ date: A.addDays(t, -58), description: 'Ferramenta de páginas', category: 'Ferramentas / SaaS', amount: 97, recurring: true, offerId: '' }),
       mk({ date: A.addDays(t, -58), description: 'Hospedagem + domínios', category: 'Domínio / Hospedagem', amount: 39.9, recurring: true, offerId: '' }),
@@ -228,7 +234,7 @@
       mk({ date: A.addDays(t, -12), description: 'Pack de criativos UGC', category: 'Criativos', amount: 300, recurring: false, offerId: offers[2].id }),
     ];
     state.offers.push(...offers); state.campaigns.push(...camps); state.spend.push(...spend);
-    state.sales.push(...sales); state.spy.push(...spy); state.costs.push(...costs);
+    state.sales.push(...sales); state.spy.push(...spy); state.swipe.push(...swipe); state.costs.push(...costs);
     if (!state.settings.monthlyGoal) state.settings.monthlyGoal = 50000;
     persist();
   };
