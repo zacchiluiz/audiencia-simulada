@@ -44,7 +44,7 @@ function paraDataUri(arquivo) {
 // 1º tenta a página com o nome exato (pt e en); só depois faz busca aproximada.
 // Dica: para nomes comuns, use o título exato da página, ex.: "Pedro (futebolista, 1997)".
 async function procurarNaWiki(nome) {
-  const props = '&prop=pageimages&piprop=thumbnail|name&pithumbsize=1400';
+  const props = '&prop=pageimages&piprop=thumbnail|name&pithumbsize=1280';
   const tentativas = [
     ['pt', `&titles=${encodeURIComponent(nome)}`],
     ['en', `&titles=${encodeURIComponent(nome)}`],
