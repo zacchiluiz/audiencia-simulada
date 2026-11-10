@@ -1,0 +1,61 @@
+[
+  {
+    "tipo": "mercado",
+    "status": "rumor",
+    "subnicho": "Brasileiros pelo mundo",
+    "titulo": "Clube saudita prepara proposta por atacante brasileiro",
+    "texto": "Exemplo de card. Troque pelo texto da notícia real e cite a fonte.",
+    "fonte": "Fonte: jornal X",
+    "foto": ""
+  },
+  {
+    "tipo": "resultado",
+    "subnicho": "Brasileirão",
+    "timeA": "TIME A", "golsA": 2,
+    "timeB": "TIME B", "golsB": 1,
+    "detalhe": "Gols: Fulano 12', Ciclano 78' / Beltrano 55'",
+    "frase": "Virada no fim e liderança garantida"
+  },
+  {
+    "tipo": "comparacao",
+    "subnicho": "Lendas",
+    "titulo": "Duelo de lendas",
+    "nomeA": "JOGADOR A", "nomeB": "JOGADOR B",
+    "linhas": [
+      ["Jogos", "1000", "1200"],
+      ["Gols", "800", "850"],
+      ["Assistências", "350", "250"],
+      ["Títulos", "45", "35"]
+    ],
+    "pergunta": "Quem foi maior? Comenta aí 👇"
+  },
+  {
+    "tipo": "polemica",
+    "subnicho": "Arbitragem",
+    "citacao": "Aqui vai a frase exata da declaração, entre aspas.",
+    "autor": "Nome do técnico, após o jogo",
+    "texto": "Contexto curto e neutro do que aconteceu."
+  },
+  {
+    "tipo": "lifestyle",
+    "subnicho": "Vida de boleiro",
+    "titulo": "Os carros do craque",
+    "itens": ["Carro 1 — modelo e ano", "Carro 2 — modelo e ano", "Carro 3 — modelo e ano"],
+    "foto": ""
+  },
+  {
+    "tipo": "nostalgia",
+    "subnicho": "Anos 2000",
+    "titulo": "Por onde anda?",
+    "nome": "NOME DO JOGADOR",
+    "antes": "2005: artilheiro do campeonato",
+    "hoje": "Hoje: comentarista e empresário",
+    "foto": ""
+  },
+  {
+    "tipo": "enquete",
+    "subnicho": "Seleção Brasileira",
+    "pergunta": "Quem é o melhor lateral do Brasil hoje?",
+    "opcoes": ["Opção A", "Opção B", "Opção C", "Opção D"]
+  }
+]
