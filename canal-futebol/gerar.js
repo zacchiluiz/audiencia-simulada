@@ -105,9 +105,10 @@ function html(p) {
     background:radial-gradient(circle at 85% 0%, ${ed.cor}33 0, transparent 45%), linear-gradient(180deg, ${marca.fundo} 0%, ${marca.fundo2} 100%)}
   .card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:14px;background:${ed.cor};z-index:3}
   /* Foto principal: ocupa o topo inteiro e some num degradê */
-  .fundo-foto{position:absolute;inset:0 0 auto 0;height:68%;background-size:cover;background-position:center 15%}
+  .fundo-foto{position:absolute;inset:0 0 auto 0;height:68%;background-size:cover;background-position:center 15%;
+    -webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 100%);mask-image:linear-gradient(180deg,#000 55%,transparent 100%)}
   .fundo-foto::after{content:'';position:absolute;inset:0;
-    background:linear-gradient(180deg, ${marca.fundo}99 0%, transparent 22%, transparent 45%, ${marca.fundo} 100%)}
+    background:linear-gradient(180deg, ${marca.fundo}99 0%, transparent 22%, transparent 50%, ${marca.fundo}cc 100%)}
   .card.com-foto .conteudo{justify-content:flex-end}
   .card.com-foto h1{font-size:88px;text-shadow:0 4px 24px #000a}
   .topo,.conteudo,.rodape{position:relative;z-index:2}

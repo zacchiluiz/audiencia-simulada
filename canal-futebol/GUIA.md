@@ -70,4 +70,11 @@ node gerar.js
 
 - `marca.json`: nome, @ e cores do canal. Troque aqui e todos os cards mudam.
 - `posts.json`: os posts do dia, com um exemplo de cada tipo (`mercado`, `resultado`, `comparacao`, `polemica`, `lifestyle`, `nostalgia`, `enquete`).
-- `foto`: caminho de uma imagem (ex.: `fotos/jogador.jpg`) ou URL. Opcional.
+### Fotos dos jogadores
+
+- **Automática:** coloque `"jogador": "Nome do jogador"` no post. O gerador busca a foto na Wikipédia/Wikimedia Commons (fotos com licença livre) e escreve o crédito do autor no rodapé do card, como a licença exige.
+  - Na comparação use `jogadorA` e `jogadorB`. Na enquete, cada opção pode ser `{ "nome": "...", "jogador": "..." }`.
+  - Para nomes comuns, use o título exato da página da Wikipédia (ex.: `"Pedro Guilherme Abreu dos Santos"`). O terminal mostra de qual página veio cada foto: **confira se é o jogador certo**.
+  - As fotos baixadas ficam em `fotos/cache/`. Para trocar uma foto errada, apague os arquivos daquele jogador nessa pasta.
+- **Manual:** `"foto": "fotos/arquivo.jpg"` (ou uma URL) e, se quiser, `"creditoFoto": "Foto: Fulano/Clube"`. A foto manual tem prioridade sobre a automática.
+- Fotos de notícia quente (contratação de hoje, por exemplo) quase nunca estão na Wikipédia. Use foto oficial do clube **com crédito**.
