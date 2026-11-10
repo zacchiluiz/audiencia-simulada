@@ -82,7 +82,7 @@ const corpo = {
     <div class="opcoes">${(p.opcoes || []).map((o, i) => {
       const nome = typeof o === 'object' ? o.nome : o;
       const f = typeof o === 'object' ? o._foto : null;
-      return `<div class="${f ? 'com-foto' : ''}">${f ? `<i ${bg(f)}></i>` : ''}<span>${'ABCD'[i] || i + 1}</span>${esc(nome)}</div>`;
+      return `<div class="${f ? 'com-foto' : ''}">${f ? `<i ${bg(f)}></i>` : ''}<span>${'ABCD'[i] || i + 1}</span><b>${esc(nome)}</b></div>`;
     }).join('')}</div>
     <h2 class="centro">Vota nos comentários 👇</h2>`,
 };
